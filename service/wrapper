@@ -1,0 +1,11 @@
+#!/bin/sh
+
+exec 2>/dev/null
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
+timeout -k1 120 stdbuf -i0 -o0 -e0 /rick/backend.py doit
+if [ $? -ne 0 ]
+then
+  echo "KO"
+fi

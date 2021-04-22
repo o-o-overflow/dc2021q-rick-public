@@ -1,0 +1,5 @@
+click
+ipython
+jedi==0.17.2
+PyYAML
+coloredlogs

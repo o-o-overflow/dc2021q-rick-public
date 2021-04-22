@@ -1,0 +1,5 @@
+click
+ipython
+pwntools
+jedi==0.17.2
+PyYAML

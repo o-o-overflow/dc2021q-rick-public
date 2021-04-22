@@ -1,0 +1,5 @@
+.gdb_history
+.ropeproject/
+gdbinit.local
+*.log
+*~

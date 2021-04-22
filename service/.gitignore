@@ -1,0 +1,5 @@
+CustomObjects.h
+TexturesCodes.h
+*.o
+src/rick
+src/res.dat

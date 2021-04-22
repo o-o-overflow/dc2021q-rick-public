@@ -1,0 +1,27 @@
+from ubuntu:20.04
+
+run apt-get update
+run apt-get install -y make gcc build-essential python3 vim nano netcat-openbsd wget curl file
+run apt-get install -y libglu1-mesa-dev freeglut3-dev mesa-common-dev
+run apt-get install -y python3-pip
+
+run mkdir /build
+copy reqs-build.txt /build/
+
+workdir /build
+
+run pip3 install virtualenv
+run python3 -m virtualenv venv
+run ./venv/bin/python3 -m pip install -r reqs-build.txt
+
+copy src /build/src
+copy gen.py /build/
+
+env TERM=linux
+env TERMINFO=/etc/terminfo
+
+run ./venv/bin/python3 gen.py gen-texture-headers
+run ./venv/bin/python3 gen.py gen-objects-cpp
+run cd src && make clean && make -j16 && cd -
+run ./venv/bin/python3 gen.py pack-resources
+run cp ./src/rick rick
